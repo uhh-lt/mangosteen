@@ -88,11 +88,14 @@ ENV/
 # Rope project settings
 .ropeproject
 
-*.swp
-*.pdf
-*~*
+# R
 .RData
 .Rhistory
+
+# VIM
+*.swp
+*~*
+
 .DS_Store
 Makefile
 *.txt
@@ -100,3 +103,6 @@ Makefile
 *.tsv
 *.json
 *.ipynb
+*.pdf
+
+/params.py
