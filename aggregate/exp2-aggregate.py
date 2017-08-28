@@ -59,21 +59,26 @@ hypernym_answers, hypernym_intruders, hypernym_gold = parse(
     'select_the_topics_that_are_nonrelevant_for_the_words_above'
 )
 
-def answers(filename, data):
+def answers(filename, data, bad):
     with open(filename, 'w', newline='') as f:
         writer = csv.writer(f)
 
-        writer.writerow(('unit', 'worker', 'bad'))
+        writer.writerow(('item', 'rater', 'answer'))
 
         for cid in cids:
-            candidates = [(cid, worker_id, answer, trust)
-                          for worker_id, sublist in data[cid].items()
-                          for answer, trust in sublist]
+            trusted = {worker_id: trust for worker_id, votes in data[cid].items()
+                                        for _, trust in votes}
 
-            candidates = sorted(candidates, key=operator.itemgetter(3))[-args.n:]
+            trusted = dict(sorted(trusted.items(), key=operator.itemgetter(1)))
 
-            for cid, worker_id, answer, _ in candidates:
-                writer.writerow((cid, worker_id, answer))
+            for worker_id, votes in data[cid].items():
+                if worker_id not in trusted:
+                    continue
+
+                votes = {answer for answer, trust in votes}
+
+                for i in range(len(bad)):
+                    writer.writerow(('%d_%d' % (cid, i), worker_id, str(int(i in votes))))
 
 def aggregate(data):
     answers = {}
@@ -136,7 +141,7 @@ print('Clusters (%d non-golden out of %d):\taccuracy=%.3f, zero_one_loss=%.3f, a
     len(cids), len(cluster_answers), *scores(cluster_true,  cluster_pred), mean(cluster_bad.values()))
 )
 
-answers('clusters-votes.csv', cluster_answers)
+answers('clusters-votes.csv', cluster_answers, BAD_SENSES)
 
 # hypernym-based accuracy
 
@@ -151,7 +156,7 @@ print('Hypernyms (%d non-golden out of %d):\taccuracy=%.3f, zero_one_loss=%.3f, 
     len(cids), len(hypernym_answers), *scores(hypernym_true,  hypernym_pred), mean(hypernym_bad.values()))
 )
 
-answers('hypernyms-votes.csv', hypernym_answers)
+answers('hypernyms-votes.csv', hypernym_answers, BAD_HYPERNYMS)
 
 # results
 
