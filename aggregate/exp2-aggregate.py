@@ -49,6 +49,21 @@ def parse(filename, bad, field):
 
     return (clusters, intruders, gold)
 
+def agree(clusters, n):
+    agreed = defaultdict(lambda: defaultdict(lambda: list()))
+
+    for cid, workers in clusters.items():
+        trusted = {worker_id: trust for worker_id, votes in workers.items()
+                                    for _, trust in votes}
+
+        trusted = dict(sorted(trusted.items(), key=operator.itemgetter(1))[-n:])
+
+        for worker_id in workers:
+            if worker_id in trusted:
+                agreed[cid][worker_id] = clusters[cid][worker_id]
+
+    return agreed
+
 cluster_answers, cluster_intruders, cluster_gold = parse(
     'job_953322.json', BAD_SENSES,
     'select_the_words_which_are_nonrelevant_for_the_topics_above'
@@ -59,6 +74,9 @@ hypernym_answers, hypernym_intruders, hypernym_gold = parse(
     'select_the_topics_that_are_nonrelevant_for_the_words_above'
 )
 
+cluster_answers  = agree(cluster_answers,  args.n)
+hypernym_answers = agree(hypernym_answers, args.n)
+
 def answers(filename, data, bad):
     with open(filename, 'w', newline='') as f:
         writer = csv.writer(f)
@@ -66,15 +84,7 @@ def answers(filename, data, bad):
         writer.writerow(('item', 'rater', 'answer'))
 
         for cid in cids:
-            trusted = {worker_id: trust for worker_id, votes in data[cid].items()
-                                        for _, trust in votes}
-
-            trusted = dict(sorted(trusted.items(), key=operator.itemgetter(1)))
-
             for worker_id, votes in data[cid].items():
-                if worker_id not in trusted:
-                    continue
-
                 votes = {answer for answer, trust in votes}
 
                 for i in range(len(bad)):
@@ -88,11 +98,7 @@ def aggregate(data):
 
         total = .0
 
-        candidates = [val for sublist in data[cid].values() for val in sublist]
-
-        candidates = sorted(candidates, key=operator.itemgetter(1))[-args.n:]
-
-        for answer, trust in candidates:
+        for answer, trust in (val for sublist in data[cid].values() for val in sublist):
             c[answer] += trust
             total     += trust
 
@@ -110,11 +116,7 @@ def badness(data, intruders, scorer=lambda x: x):
 
         total = .0
 
-        candidates = [val for sublist in data[cid].values() for val in sublist]
-
-        candidates = sorted(candidates, key=operator.itemgetter(1))[-args.n:]
-
-        for answer, trust in candidates:
+        for answer, trust in (val for sublist in data[cid].values() for val in sublist):
             if answer != intruders[cid]:
                 answer = None
 
