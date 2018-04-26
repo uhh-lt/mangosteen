@@ -26,7 +26,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 N = 5
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import logging, sys
+import logging, sys, os
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -17,7 +17,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 env = lmdb.open(DATABASE, create=False, readonly=True, max_dbs=10, map_size=1024 * 1024 * 1024 * 20)
 senses_db, egos_db = env.open_db('senses'), env.open_db('egos')

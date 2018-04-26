@@ -22,7 +22,9 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
+
+CW_JAR = os.path.join(os.getcwd(), 'chinese-whispers', 'target', 'chinese-whispers.jar')
 
 env = lmdb.open(DATABASE, create=False, max_dbs=10, map_size=1024 * 1024 * 1024 * 20)
 senses_db, egos_db = env.open_db('senses'), env.open_db('egos')
@@ -73,12 +75,11 @@ atexit.register(lambda: os.remove(cw_output_path))
 
 invocation = [
     '/usr/bin/java', '-Xms4G', '-Xmx4G',
-    '-cp', '/home/dmitry/chinese-whispers/target/chinese-whispers.jar',
-    'de.tudarmstadt.lt.cw.global.CWGlobal',
+    '-cp', CW_JAR, 'de.tudarmstadt.lt.cw.global.CWGlobal',
     '-N', '200',
     '-cwOption', 'TOP',
     '-in', cw_input_path,
-    '-out', cw_output_path 
+    '-out', cw_output_path
 ]
 
 check_output(invocation)

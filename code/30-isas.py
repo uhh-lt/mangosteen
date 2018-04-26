@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import sys, csv, operator, logging
+import sys, csv, operator, logging, os
 from collections import Counter, OrderedDict, defaultdict
 from math import log
 from sklearn.feature_extraction import DictVectorizer
@@ -21,7 +21,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 env = lmdb.open(DATABASE, max_dbs=10, map_size=1024 * 1024 * 1024 * 20)
 isas_db, hypernyms_db = env.open_db('isas'), env.open_db('hypernyms')

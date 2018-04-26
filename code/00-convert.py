@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import logging, sys, csv, re, operator
+import logging, sys, csv, re, operator, os
 from collections import OrderedDict
 
 reload(sys)
@@ -16,7 +16,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 N = 20
 

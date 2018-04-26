@@ -27,7 +27,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 env = lmdb.open(DATABASE, max_dbs=2, create=False, readonly=True)
 senses_db, hypernyms_db = env.open_db('senses'), env.open_db('hypernyms')

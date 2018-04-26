@@ -3,7 +3,7 @@
 # ./34-isas-gephi.py
 
 from __future__ import print_function
-import sys, csv, logging, itertools
+import sys, csv, logging, itertools, os
 from collections import defaultdict
 import networkx as nx
 
@@ -19,7 +19,7 @@ except:
 
 import lmdb
 
-DATABASE = '/home/dmitry/lmdb'
+DATABASE = os.path.join(os.getcwd(), 'lmdb')
 
 env = lmdb.open(DATABASE, max_dbs=1, create=False, readonly=True)
 hypernyms_db = env.open_db('hypernyms')
