@@ -97,12 +97,13 @@ ENV/
 *~*
 
 .DS_Store
-Makefile
 *.txt
 *.csv
 *.tsv
 *.json
 *.ipynb
 *.pdf
+*.zip
 
-/params.py
+/code/chinese-whispers
+/code/babelnet-extract
