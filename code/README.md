@@ -23,6 +23,15 @@ Mangosteen takes a *disambiguated distributional thesaurus* (DDT) as an input an
 3. Gathering and disambiguation the hypernyms (Section 4 of the [paper])
 4. Parameter tuning (Section 5 of the [paper])
 
+The input file is a text file containing tab-separated values with header:
+
+|word|cid|cluster|isas|
+|----|---|-------|----|
+|cat|0|`dog#2:0.255,rabbit#0:0.215,kitten#0:0.210`|`animal#0:24.501,wildlife#0:5.885,mammal#0`|
+|kitten|0|`cat#0:0.210,puppy#0:0.175,dog#2:0.139`|`animal#0:9.875,wildlife#0:1.774,mammal#0:1.718`|
+
+The `word` column contains lexical entries. The `cid` column contains sense identifiers of these entries. The `cluster` column contains comma-separated related word senses with weights. The `isas` column contains comma-separated upper word sense with weights.
+
 ## Code Structure
 
 Mangosteen is implemented in a UNIX-way. It is a pipeline-based. It runs small different programs written in different languages to achieve the gold of semantic class induction. There are the following programs:
@@ -78,7 +87,7 @@ The reader is probably shocked by the amount of scripts above. Please do not wor
 * `make arrange` writes the summaries using `enumerate.sh`;
 * `make evaluate` tunes the parameters using `enumerate.sh`.
 
-Generally, to reproduce our study, it is sufficient to run `make egos clusters arrange evaluate` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. The following files can be of interest:
+The name of the input file is expected to be `ddt.tsv`. Generally, to reproduce our study, it is sufficient to run `make egos clusters arrange evaluate` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. The following files can be of interest:
 
 * `41-join.txt` with the semantic classes, their hyperyms, and WordNet-based scores;
 * `42-aggregate.txt` with the summary on the evaluation on WordNet;
