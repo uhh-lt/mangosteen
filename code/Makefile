@@ -3,6 +3,28 @@
 export LANG=en_US.UTF-8
 export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
+egos:
+	rm -rf /home/dmitry/lmdb
+	./00-convert.py
+	./11-ego-batch.sh
+
+clusters:
+	./22-edges-batch.sh
+	rm -fv 20-edges.txt
+	./24-prune-batch.sh
+	rm -fv 22-prune-raw.txt
+	./25-pos.py
+	rm -fv 24-prune.txt
+	./26-cw.sh
+	python -m lmdb -S 20480 -e "$(CURDIR)/lmdb" drop hypernyms
+	./30-isas.py
+
+arrange:
+	./enumerate.sh ./arrange.sh
+
+evaluate:
+	./enumerate.sh ./evaluate.sh
+
 chinese-whispers: chinese-whispers-master.zip
 	rm -rf chinese-whispers-master
 	unzip chinese-whispers-master.zip
@@ -27,6 +49,12 @@ babelnet-extract: babelnet-extract.zip
 	ln -sfT $(CURDIR)/BabelNet-API-$$BABELNET/config $(CURDIR)/babelnet-extract/config
 	ln -sfT $(CURDIR)/BabelNet-API-$$BABELNET/resources $(CURDIR)/babelnet-extract/resources
 	mvn -f babelnet-extract/pom.xml package
+	./51-clusters.sh
 
 babelnet-extract.zip:
 	wget -O babelnet-extract.zip "https://github.com/nlpub/babelnet-extract/archive/f7e1cf9dacc84b5a6c03d928780d5777e910934a.zip"
+
+clean:
+	rm -fv *.txt
+	rm -fv *.csv
+	rm -fv *.log
