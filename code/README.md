@@ -80,7 +80,7 @@ Mangosteen is implemented in a UNIX-way. It is pipeline-based. It runs small dif
 
 The reader is probably shocked by the amount of scripts above. Please do not worry. We offer a *very convenient* `Makefile` that does everything automatically:
 
-* `make chinese-whispers` installs the [Chinese Whispers] dependency;
+* `make chinese-whispers` installs the [Chinese Whispers](http://github.com/uhh-lt/chinese-whispers) dependency;
 * `make babelnet-extract` installs the [BabelNet Extract](https://github.com/nlpub/babelnet-extract) dependency and extracts the useful data from it (it takes quite a long time);
 * `make egos` obtains clusters ego networks;
 * `make clusters` obtains semantic classes with hypernyms;
