@@ -49,6 +49,8 @@ babelnet-extract: babelnet-extract.zip BabelNet-API-3.7.zip
 	ln -sfT $(CURDIR)/BabelNet-API-$$BABELNET/config $(CURDIR)/babelnet-extract/config
 	ln -sfT $(CURDIR)/BabelNet-API-$$BABELNET/resources $(CURDIR)/babelnet-extract/resources
 	mvn -f babelnet-extract/pom.xml package
+
+babelnet-clusters:
 	./51-clusters.sh
 
 BabelNet-API-3.7.zip:
