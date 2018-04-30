@@ -34,7 +34,7 @@ The `word` column contains lexical entries. The `cid` column contains sense iden
 
 ## Code Structure
 
-Mangosteen is implemented in a UNIX-way. It is a pipeline-based. It runs small different programs written in different languages to achieve the gold of semantic class induction. There are the following programs:
+Mangosteen is implemented in a UNIX-way. It is pipeline-based. It runs small different programs written in different languages to achieve the goal of semantic class induction. There are the following programs:
 
 ### Necessary Preparations
 
@@ -87,7 +87,7 @@ The reader is probably shocked by the amount of scripts above. Please do not wor
 * `make arrange` writes the summaries using `enumerate.sh`;
 * `make evaluate` tunes the parameters using `enumerate.sh`.
 
-The name of the input file is expected to be `ddt.tsv`. Generally, to reproduce our study, it is sufficient to run `make egos clusters babelnet-clusters arrange evaluate` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. The following files can be of interest:
+The name of the input file is expected to be `ddt.tsv` which can be downloaded [here](http://panchenko.me/data/joint/ddt/ddt-mwe-45g-8m-thr-agressive2-cw-e0-N200-n200-minsize5-isas-cmb-nopos-closure.csv.gz) or via `make ddt.tsv`. Generally, to reproduce our study, it is sufficient to run `make all` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. The following files can be of interest:
 
 * `41-join.txt` with the semantic classes, their hyperyms, and WordNet-based scores;
 * `42-aggregate.txt` with the summary on the evaluation on WordNet;
