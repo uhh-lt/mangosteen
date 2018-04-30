@@ -20,10 +20,10 @@ clusters:
 	./30-isas.py
 
 arrange:
-	./enumerate.sh ./arrange.sh
+	./arrange.sh
 
 evaluate:
-	./enumerate.sh ./evaluate.sh
+	./evaluate.sh
 
 chinese-whispers: chinese-whispers-master.zip
 	rm -rf chinese-whispers-master
