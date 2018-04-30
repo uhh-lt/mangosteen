@@ -5,6 +5,8 @@ export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
 all: clean egos clusters babelnet-clusters arrange evaluate
 
+deps: chinese-whispers babelnet-extract pip
+
 egos:
 	rm -rf "$(CURDIR)/lmdb"
 	./00-convert.py
@@ -61,7 +63,10 @@ BabelNet-API-3.7.zip:
 babelnet-extract.zip:
 	wget -O babelnet-extract.zip "https://github.com/nlpub/babelnet-extract/archive/f7e1cf9dacc84b5a6c03d928780d5777e910934a.zip"
 
+pip:
+	pip install -r requirements.txt
+
 clean:
-	rm -fv *.txt
-	rm -fv *.csv
-	rm -fv *.log
+	find . -maxdepth 1 -name '*.txt' ! -name 'requirements.txt' -type f -exec rm -fv {} +
+	rm -fv *.csv *.log
+	rm -rf "$(CURDIR)/lmdb"
