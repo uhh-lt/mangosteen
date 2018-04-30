@@ -66,6 +66,12 @@ babelnet-extract.zip:
 pip:
 	pip install -r requirements.txt
 
+ddt.tsv: ddt.csv.gz
+	zcat ddt.csv.gz > ddt.tsv
+
+ddt.csv.gz:
+	wget -O 'ddt.csv.gz' 'http://panchenko.me/data/joint/ddt/ddt-mwe-45g-8m-thr-agressive2-cw-e0-N200-n200-minsize5-isas-cmb-nopos-closure.csv.gz'
+
 clean:
 	find . -maxdepth 1 -name '*.txt' ! -name 'requirements.txt' -type f -exec rm -fv {} +
 	rm -fv *.csv *.log
