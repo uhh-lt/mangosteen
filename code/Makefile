@@ -36,7 +36,7 @@ chinese-whispers-master.zip:
 
 export BABELNET=3.7
 
-babelnet-extract: babelnet-extract.zip
+babelnet-extract: babelnet-extract.zip BabelNet-API-3.7.zip
 	ls BabelNet-API-$$BABELNET.zip >/dev/null 2>&1
 	rm -rf BabelNet-API-$$BABELNET
 	unzip BabelNet-API-$$BABELNET.zip
@@ -50,6 +50,9 @@ babelnet-extract: babelnet-extract.zip
 	ln -sfT $(CURDIR)/BabelNet-API-$$BABELNET/resources $(CURDIR)/babelnet-extract/resources
 	mvn -f babelnet-extract/pom.xml package
 	./51-clusters.sh
+
+BabelNet-API-3.7.zip:
+	wget 'https://github.com/nlpub/babelnet-extract/releases/download/bn37/BabelNet-API-3.7.zip'
 
 babelnet-extract.zip:
 	wget -O babelnet-extract.zip "https://github.com/nlpub/babelnet-extract/archive/f7e1cf9dacc84b5a6c03d928780d5777e910934a.zip"
