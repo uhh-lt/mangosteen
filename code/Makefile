@@ -3,6 +3,8 @@
 export LANG=en_US.UTF-8
 export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
+all: clean egos clusters babelnet-clusters arrange evaluate
+
 egos:
 	rm -rf /home/dmitry/lmdb
 	./00-convert.py
