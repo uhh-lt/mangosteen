@@ -96,7 +96,7 @@ The name of the input file is expected to be `ddt.tsv`. Generally, to reproduce 
 
 ## Remarks
 
-We used Debian Linux 8 (Jessie), the [Anaconda](https://www.anaconda.com/download/) distribution of Python 2, and Java 8. We cannot guarantee compatibility with other systems.
+We used Debian Linux 8 (Jessie), the [Anaconda](https://www.anaconda.com/download/) distribution of Python 2, Java 8, and Maven. We cannot guarantee compatibility with other systems, but in principle it should work with recent versions of Ubuntu and Python 2.
 
 [paper]: https://arxiv.org/abs/1711.02918
 [Chinese Whispers]: (https://github.com/uhh-lt/chinese-whispers)
