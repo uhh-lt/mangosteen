@@ -6,7 +6,7 @@ export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 all: clean egos clusters babelnet-clusters arrange evaluate
 
 egos:
-	rm -rf /home/dmitry/lmdb
+	rm -rf "$(CURDIR)/lmdb"
 	./00-convert.py
 	./11-ego-batch.sh
 
