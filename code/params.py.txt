@@ -1,0 +1,18 @@
+#!/bin/bash
+# This is the common file containing the parameters of the method.
+# Please make sure it works in Python and bash.
+
+# Proportion of the target cluster in the ego network.
+P=$P
+
+# Threshold of the co-occurence edge weight.
+T=$T
+
+# Edge weighting approach.
+E="$E"
+
+# Part of speech filtering.
+N=$N
+
+# Hypernym weighting approach.
+H="$H"
