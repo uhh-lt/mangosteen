@@ -3,7 +3,7 @@
 export LANG=en_US.UTF-8
 export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
-all: clean egos clusters babelnet-clusters arrange evaluate
+all: egos clusters babelnet-clusters arrange evaluate
 
 deps: chinese-whispers babelnet-extract pip
 
