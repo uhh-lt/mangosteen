@@ -18,6 +18,11 @@ fi
 ../41-join.sh >41-join.txt
 ../aggregate.awk <41-join.txt >42-aggregate.txt
 
+# If the BABELNET flag is not set, we are done.
+if [ -z ${BABELNET+x} ]; then
+    exit
+fi
+
 # ../51-clusters.sh
 ../52-babelnet.py
 ../53-join.sh >53-join.txt
