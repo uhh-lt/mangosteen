@@ -92,7 +92,7 @@ The name of the input file is expected to be `ddt.tsv` which can be downloaded [
 * `41-join.txt` with the semantic classes, their hyperyms, and WordNet-based scores;
 * `42-aggregate.txt` with the summary on the evaluation on WordNet.
 
-In order to evaluated against BabelNet, the `make` command should be run with the `BABELNET=1` flag. Note that such an evaluation requires the `babelnet-extract` dependency to be correctly provided with either an API key or an offline index. In this case, the following files can also be of interest:
+In order to evaluated against BabelNet, the `make` command should be ran with the `BABELNET=1` flag. Note that such an evaluation requires the `babelnet-extract` dependency to be correctly provided with either an API key or an offline index. In this case, the following files can also be of interest:
 
 * `53-join.txt` with the semantic classes, their hyperyms, and BabelNet-based scores.
 * `54-aggregate.txt` with the summary on the evaluation on BabelNet.
