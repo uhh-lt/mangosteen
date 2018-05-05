@@ -3,6 +3,12 @@
 export LANG=en_US.UTF-8
 export MAVEN_OPTS=-Dmaven.test.skip=true -Dmaven.javadoc.skip=true
 
+export P ?= 0.8
+export T ?= 10
+export E ?= log
+export N ?= 1
+export H ?= tf
+
 all: egos clusters babelnet-clusters arrange evaluate
 
 deps: chinese-whispers babelnet-extract pip

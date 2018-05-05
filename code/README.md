@@ -84,10 +84,12 @@ The reader is probably shocked by the amount of scripts above. Please do not wor
 * `make babelnet-extract` installs the [BabelNet Extract](https://github.com/nlpub/babelnet-extract) dependency and extracts the useful data from it (it takes quite a long time);
 * `make egos` obtains clusters ego networks;
 * `make clusters` obtains semantic classes with hypernyms;
-* `make arrange` writes the summaries using `enumerate.sh`;
-* `make evaluate` tunes the parameters using `enumerate.sh`.
+* `make arrange` writes the summaries;
+* `make evaluate` tunes the parameters.
 
-The name of the input file is expected to be `ddt.tsv` which can be downloaded [here](http://panchenko.me/data/joint/ddt/ddt-mwe-45g-8m-thr-agressive2-cw-e0-N200-n200-minsize5-isas-cmb-nopos-closure.csv.gz) or via `make ddt.tsv`. Generally, to reproduce our study, it is sufficient to run `make all` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. The following files can be of interest:
+The name of the input file is expected to be `ddt.tsv` which can be downloaded [here](http://panchenko.me/data/joint/ddt/ddt-mwe-45g-8m-thr-agressive2-cw-e0-N200-n200-minsize5-isas-cmb-nopos-closure.csv.gz) or via `make ddt.tsv`. Generally, to reproduce our study, it is sufficient to run `make all` after installing the dependencies. All the resulting files are stored in the dictionary named like `P80_T100_Elog_N0_Htfidf`. The directory name reflects the parameters used to obtain the results. To try grid search over the algorithm hyper-parameters, it is possible to run `./enumerate.sh make all`, but it takes a long time.
+
+The following files can be of interest:
 
 * `41-join.txt` with the semantic classes, their hyperyms, and WordNet-based scores;
 * `42-aggregate.txt` with the summary on the evaluation on WordNet.
