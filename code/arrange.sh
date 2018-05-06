@@ -13,12 +13,10 @@ echo $TARGET
 
 trap "rm -rf \"$TARGET\" \"graphviz\"" INT
 
-cp -fv "params.py" "$TARGET/"
-
 rm -rf "$TARGET" "graphviz"
 mkdir -p "$TARGET" "graphviz"
 
-cp -fv "26-cw.txt" "30-hypernyms.txt" "$TARGET/"
+cp -fv "params.py" "26-cw.txt" "30-hypernyms.txt" "$TARGET/"
 
 set +e
 egrep -i '(python|ruby|jaguar)' 26-cw.txt | cut -f1 | xargs -n1 -P8 -t ./31-cluster-gv.py
