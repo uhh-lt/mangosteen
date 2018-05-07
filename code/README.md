@@ -101,7 +101,11 @@ In order to evaluated against BabelNet, the `make` command should be ran with th
 
 ## Remarks
 
-We used Debian Linux 8 (Jessie), the [Anaconda](https://www.anaconda.com/download/) distribution of Python 2, Java 8, and Maven. We cannot guarantee compatibility with other systems, but in principle it should work with recent versions of Ubuntu and Python 2.
+We used Debian Linux 8 (Jessie), the [Anaconda](https://www.anaconda.com/download/) distribution of Python 2, Java 8, and Maven. We cannot guarantee compatibility with other systems, but in principle it should work with recent versions of Ubuntu and Python 2. Another dependencies which are needed to run all scripts in this repository are:
+
+- graphviz (should be on the PATH)
+
+- A dump of BabelNet3.7. The path to unpacked archive (available from the authors of BabelNet free of charge) should be indicated in the config directory of the babelnet-extract tool. 
 
 [paper]: https://arxiv.org/abs/1711.02918
 [Chinese Whispers]: (https://github.com/uhh-lt/chinese-whispers)
