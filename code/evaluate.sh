@@ -18,8 +18,8 @@ fi
 ../41-join.sh >41-join.txt
 ../aggregate.awk <41-join.txt >42-aggregate.txt
 
-# If the BABELNET flag is not set, we are done.
-if [ -z ${BABELNET+x} ]; then
+# If the BABELNET_EVAL flag is not set, we are done.
+if [ -z ${BABELNET_EVAL+x} ]; then
     exit
 fi
 
