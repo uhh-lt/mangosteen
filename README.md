@@ -4,7 +4,13 @@ Mangosteen
 About the method
 ----------------
 
-Mangosteen is a rare fruit. This repository contains an implementation of a a system for inducing distributional sense-aware semantic classes labeled with hypernyms. It helps to induced hypernyms of rare words, such as "mangosteen", which are often cannot be directly extracted from text, because such rare words do not appear in the required for extraction contexts. The method implemented in this repository was presented at the LREC'2018 conference in Miyazaki, Japan. [The paper is available online (PDF)](https://arxiv.org/abs/1711.02918). Please use the following cite to refer to this work:
+Mangosteen is a rare fruit. This repository contains an implementation of a a system for inducing distributional sense-aware semantic classes labeled with hypernyms. It helps to induced hypernyms of rare words, such as "mangosteen", which are often cannot be directly extracted from text, because such rare words do not appear in the required for extraction contexts. The method implemented in this repository was presented at the LREC'2018 conference in Miyazaki, Japan. 
+
+- [**The original paper (PDF)**](https://arxiv.org/abs/1711.02918). 
+
+- [**Presentation (PDF)**](https://www.slideshare.net/alexanderpanchenko/improving-hypernymy-extraction-with-distributional-semantic-classes)
+
+Please use the following cite to refer to this work:
 
 ```
 @inproceedings{Panchenko:18:lrec,
@@ -21,7 +27,6 @@ Mangosteen is a rare fruit. This repository contains an implementation of a a sy
 
 In this paper, we show how distributionally-induced semantic classes can be helpful for extracting hypernyms. We present methods for inducing sense-aware semantic classes using distributional semantics and using these induced semantic classes for filtering noisy hypernymy relations. Denoising of hypernyms is performed by labeling each semantic class with its hypernyms. On the one hand, this allows us to filter out wrong extractions using the global structure of distributionally similar senses. On the other hand, we infer missing hypernyms via label propagation to cluster terms. We conduct a large-scale crowdsourcing study showing that processing of automatically extracted hypernyms using our approach improves the quality of the hypernymy extraction in terms of both precision and recall. Furthermore, we show the utility of our method in the domain taxonomy induction task, achieving the state-of-the-art results on a SemEval'16 task on taxonomy induction
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/9blJq0dmi98gCD" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/alexanderpanchenko/improving-hypernymy-extraction-with-distributional-semantic-classes" title="Improving Hypernymy Extraction with Distributional Semantic Classes" target="_blank">Improving Hypernymy Extraction with Distributional Semantic Classes</a> </strong> from <strong><a href="//www.slideshare.net/alexanderpanchenko" target="_blank">Alexander Panchenko</a></strong> </div>
 
 Structure of the repository
 ---------------------------
