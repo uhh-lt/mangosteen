@@ -7,8 +7,7 @@ About the method
 Mangosteen is a rare fruit. This repository contains an implementation of a a system for inducing distributional sense-aware semantic classes labeled with hypernyms. It helps to induced hypernyms of rare words, such as "mangosteen", which are often cannot be directly extracted from text, because such rare words do not appear in the required for extraction contexts. The method implemented in this repository was presented at the LREC'2018 conference in Miyazaki, Japan. 
 
 - [**The original paper (PDF)**](http://www.lrec-conf.org/proceedings/lrec2018/pdf/234.pdf). 
-
-- [**Presentation (PDF)**](https://www.slideshare.net/alexanderpanchenko/improving-hypernymy-extraction-with-distributional-semantic-classes)
+- [**Presentation of the method (PDF)**](https://www.slideshare.net/alexanderpanchenko/improving-hypernymy-extraction-with-distributional-semantic-classes)
 
 Please use the following cite to refer to this work:
 
